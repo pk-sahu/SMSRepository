@@ -1,0 +1,99 @@
+{
+	"variables": [],
+	"info": {
+		"name": "PostmanScript",
+		"_postman_id": "1212fe8a-9d4c-1d14-d75d-64dd700c35fe",
+		"description": "Postmanscript for SMS Repository",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getStudentById",
+			"request": {
+				"url": "http://localhost:8080/sms/student/3",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getAllStudents",
+			"request": {
+				"url": "http://localhost:8080/sms/students",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "updateStudent",
+			"request": {
+				"url": "http://localhost:8080/sms/student",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 24,\n    \"name\": \"Alok\",\n    \"gender\": \"Male\",\n    \"birthplace\": \"Pune\",\n    \"dateOfBirth\": \"2000-05-16\",\n    \"caste\": \"General\",\n    \"phone\": \"5555588888\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "deleteStudent",
+			"request": {
+				"url": "http://localhost:8080/sms/student/24",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "addStudent",
+			"request": {
+				"url": "http://localhost:8080/sms/student",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Alok\",\n    \"gender\": \"Male\",\n    \"birthplace\": \"Pune\",\n    \"dateOfBirth\": \"2010-05-16\",\n    \"caste\": \"General\",\n    \"phone\": \"1111199999\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

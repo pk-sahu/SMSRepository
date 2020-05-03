@@ -1,0 +1,15 @@
+CREATE TABLE STD_INFO (
+  ID int(10) NOT NULL AUTO_INCREMENT,
+  NAME varchar(25) DEFAULT NULL,
+  GENDER varchar(10) DEFAULT NULL,
+  BIRTHPLACE varchar(20) DEFAULT NULL,
+  DOB date DEFAULT NULL,
+  CASTE varchar(15) DEFAULT NULL,
+  PHONE bigint(11) DEFAULT NULL,
+  PRIMARY KEY (ID)
+);
+
+select * from STD_INFO where ID = 21;
+drop table STD_INFO;
+--DOB varchar(10) DEFAULT NULL,
+--CASTE varchar(15) DEFAULT NULL,
