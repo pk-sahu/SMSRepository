@@ -9,7 +9,15 @@ CREATE TABLE STD_INFO (
   PRIMARY KEY (ID)
 );
 
-select * from STD_INFO where ID = 21;
-drop table STD_INFO;
---DOB varchar(10) DEFAULT NULL,
---CASTE varchar(15) DEFAULT NULL,
+create table users (
+    username varchar(50) not null,
+    country varchar(30),
+    enabled smallint,
+    full_name varchar(100),
+    password varchar(800) not null,
+    role varchar(50),
+    primary key (username)
+);
+INSERT INTO `users` (`username`, `password`, `full_name`, `role`, `country`, `enabled`) VALUES 
+('kedar', '$2a$10$Pbqq0rUvu3jZGoB/.vzaheaDwUmoGSoSQY1NNOh1.KVit3A7qtuHS', 'Kedar V', 'ROLE_ADMIN', 'US', 1),
+('akshay', '$2a$10$w/wNygSCaypyFev2qOE68e62cjSbv/IgUdMen814m08JCZlXX079e', 'Akshay D', 'ROLE_USER', 'India', 1); 
