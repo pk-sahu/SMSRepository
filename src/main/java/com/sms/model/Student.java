@@ -10,7 +10,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+//@JsonFilter("studentFilter")
+//@JsonIgnoreProperties(value= {"caste","phone"})
+@ApiModel(description="All APIs about Student.")
 @Entity
 @Table(name="STD_INFO")
 public class Student {
@@ -20,6 +29,8 @@ public class Student {
 	@Column(name="ID")
 	private Integer id;
 	
+	@Size(min=2, message="Name should have atleast 2 characters")
+	@ApiModelProperty(notes="Name should have atleast 2 characters")
 	@Column(name="NAME")
 	private String name;
 	
@@ -36,6 +47,7 @@ public class Student {
 	@Column(name="CASTE")
 	private String caste;	
 	
+	//@JsonIgnore	// This is static filtering
 	@Column(name="PHONE")
 	private String phone;
 

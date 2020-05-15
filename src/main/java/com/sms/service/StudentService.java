@@ -9,6 +9,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 import com.sms.dao.StudentDAO;
+import com.sms.exception.UserNotFoundException;
 import com.sms.model.Student;
 
 @Service
@@ -19,6 +20,8 @@ public class StudentService {
 	
 	public Student getStudentById(Integer id){
 		Optional<Student> student = studentDAO.findById(id);
+		if(!student.isPresent())
+			throw new UserNotFoundException("Student is not found with id-"+ id);
 		return student.get();
 	}
 	
