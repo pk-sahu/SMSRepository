@@ -11,9 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.sms.filter.JwtRequestFilter;
-import com.sms.filter.TokenBasedAuthenticationFilter;
 import com.sms.service.UserDetailsServiceImpl;
 
 
@@ -26,6 +26,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private AppAuthenticationEntryPoint appAuthenticationEntryPoint;
+	
+	@Autowired
+	private JwtRequestFilter jwtRequestFilter; 
 	
 	@Bean
 	@Override
@@ -43,13 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		http.exceptionHandling().authenticationEntryPoint(appAuthenticationEntryPoint);
 		
-		JwtRequestFilter jwtRequestFilter = new JwtRequestFilter(authenticationManager());
-		jwtRequestFilter.setJwtUserDetailsService(userDetailsServiceImpl);
 		http.httpBasic().disable()
 			.formLogin().disable()
 			.logout().disable()
-			.addFilter(jwtRequestFilter)
-			.addFilter(new TokenBasedAuthenticationFilter(authenticationManager()))
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and();
 		
 		http.authorizeRequests().antMatchers("/sms/authenticate").permitAll()
@@ -63,6 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 								.antMatchers("/sms/**").authenticated();
 		http.headers().cacheControl();
 		
+		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 		/*http.csrf().disable().authorizeRequests().antMatchers("/sms/basicStd/**")
 			.hasAnyRole("admin","user").and().formLogin();
 		http.csrf().disable().authorizeRequests().antMatchers("/sms/admin/**")
