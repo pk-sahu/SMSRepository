@@ -47,4 +47,13 @@ public class StudentService {
 	public void deleteStudent(Integer id){
 		studentDAO.deleteById(id);
 	}
+	
+	public List<Student> getStudentsOfUser(String userName){
+		Iterable<Student> studentList = studentDAO.findByCreatedBy(userName);
+		List<Student> studentArrayList = new ArrayList<Student>();
+		for(Student student : studentList) 
+			studentArrayList.add(student);
+		return studentArrayList;	
+	}
+	
 }

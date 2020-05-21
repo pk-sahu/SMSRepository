@@ -51,6 +51,9 @@ public class Student {
 	@Column(name="PHONE")
 	private String phone;
 
+	@Column(name="CREATEDBY")
+	private String createdBy;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -106,6 +109,13 @@ public class Student {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
 	
 }

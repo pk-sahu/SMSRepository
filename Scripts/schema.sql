@@ -6,6 +6,7 @@ CREATE TABLE STD_INFO (
   DOB date DEFAULT NULL,
   CASTE varchar(15) DEFAULT NULL,
   PHONE bigint(11) DEFAULT NULL,
+  CREATEDBY varchar(50) not null,
   PRIMARY KEY (ID)
 );
 
